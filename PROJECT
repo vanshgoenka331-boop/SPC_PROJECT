@@ -1,0 +1,42 @@
+#include <stdio.h>
+int main() {
+ int choice, count = 0;
+ float budget, spent = 0;
+ float expense[20];
+ char name[20][20];
+ printf("Enter total budget: ");
+ scanf("%f", &budget);
+ do {
+ printf("\n1. Add Expense");
+ printf("\n2. View Expenses");
+ printf("\n3. Remaining Budget");
+ printf("\n4. Exit");
+ printf("\nEnter choice: ");
+ scanf("%d", &choice);
+ switch (choice) {
+ case 1:
+ printf("Enter expense name: ");
+ scanf("%s", name[count]);
+ printf("Enter expense amount: ");
+ scanf("%f", &expense[count]);
+ spent = spent + expense[count];
+ count++;
+ break;
+ case 2:
+ printf("\nExpenses:\n");
+ for (int i = 0; i < count; i++) {
+ printf("%s : %.2f\n", name[i], expense[i]);
+ }
+ break;
+ case 3:
+ printf("Remaining budget: %.2f\n", budget - spent);
+ break;
+ case 4:
+ printf("Program ended.\n");
+ break;
+ default:
+ printf("Invalid choice\n");
+ }
+ } while (choice != 4);
+ return 0;
+}
